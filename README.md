@@ -1,38 +1,38 @@
 # Bob OpenAI Compatible Translate
 
-[English](README.en.md)
+[简体中文](README.zh-CN.md)
 
-适用于 macOS [Bob](https://bobtranslate.com/) 的翻译插件，支持 OpenAI 兼容的 Responses 和 Chat Completions API，可自定义服务地址、模型和思考等级。
+A translation plugin for [Bob](https://bobtranslate.com/) on macOS. Supports OpenAI-compatible Responses and Chat Completions APIs with a configurable base URL, model, and reasoning effort.
 
-## 安装
+## Install
 
-从 [Releases](https://github.com/rhysmic/bob-openai-compatible-translate/releases) 下载 `bob-openai-compatible-translate.bobplugin`，双击导入 Bob（1.8.0 或更新版本）。如果尚无发布包，可按下方说明自行构建。
+Download `bob-openai-compatible-translate.bobplugin` from [Releases](https://github.com/rhysmic/bob-openai-compatible-translate/releases) and open it in Bob (1.8.0 or later). If no release is available yet, build it locally as described below.
 
-本项目使用新的插件标识符，与旧插件独立安装；需要重新填写配置。
+This project has a new plugin identifier and installs separately from the old plugin. Configure it again after installation.
 
-## 配置
+## Configure
 
-- **API type**：默认 Responses API；服务不支持时选择 Chat Completions API
-- **API Base URL**：默认 `https://api.openai.com/v1`；填写基础地址，不要附加 `/responses` 或 `/chat/completions`
-- **API Key**：服务商提供的密钥，必填
-- **Model**：服务支持的模型名称，默认 `gpt-4.1`
-- **Reasoning effort**：默认 `low`；参数不受支持时会逐级降低，最后移除该参数重试
+- **API type**: Responses API by default; select Chat Completions API if your provider requires it
+- **API Base URL**: defaults to `https://api.openai.com/v1`; omit `/responses` and `/chat/completions`
+- **API Key**: your provider's API key, required
+- **Model**: a model your provider supports; defaults to `gpt-4.1`
+- **Reasoning effort**: defaults to `low`; unsupported levels are lowered before retrying without the parameter
 
-在 Bob 中选中文字并翻译即可。兼容性取决于服务是否支持所选 API 格式和 Bearer 认证，并非所有标称 OpenAI 兼容的服务都适用。
+Select text and translate with Bob. Providers must support the selected request format and Bearer authentication; compatibility is not guaranteed for every service advertised as OpenAI-compatible.
 
-## 隐私
+## Privacy
 
-待翻译文本和 API Key 会发送到你配置的 API 服务。不要向不可信的地址发送敏感文本或密钥；使用 HTTPS。插件不包含遥测或内置密钥。服务商可能收取 API 费用；提交问题时请遮盖密钥、私有地址和待翻译内容。
+Translation text and your API key are sent to the API service you configure. Use HTTPS and a trusted provider for sensitive content. The plugin contains no telemetry or bundled credentials. API usage may incur charges. Redact keys, private endpoints, and translation text before reporting issues.
 
-## 开发
+## Develop
 
-需要 Node.js 22+、Bash 和 zip，无需安装依赖。
+Requires Node.js 22+, Bash, and zip. No dependency installation is needed.
 
 ```sh
 npm test
 npm run build
 ```
 
-构建产物为 `bob-openai-compatible-translate.bobplugin`。测试使用模拟请求，不调用真实 API；仍需在 macOS Bob 中验证安装与实际翻译。
+The output is `bob-openai-compatible-translate.bobplugin`. Tests use mocked requests, not live APIs; installation and live translation still need testing in Bob on macOS.
 
-发布步骤见 [CONTRIBUTING.md](CONTRIBUTING.md)。[MIT License](LICENSE)。
+See [CONTRIBUTING.md](CONTRIBUTING.md) for releases. [MIT License](LICENSE).
