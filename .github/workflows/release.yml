@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - name: Validate tag
+        run: node -e 'const v=require("./src/info.json").version; if(process.env.GITHUB_REF_NAME !== "v"+v) throw new Error("Tag does not match plugin version")'
+      - run: npm run build
+      - name: Generate update feed
+        run: node scripts/create-appcast.js
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          printf 'Download the plugin and open it in Bob. Configure your API base URL, API key, model, and API type.\n\nSHA-256: ' > release-notes.txt
+          sha256sum bob-openai-compatible-translate.bobplugin | cut -d ' ' -f 1 >> release-notes.txt
+          gh release create "$GITHUB_REF_NAME" bob-openai-compatible-translate.bobplugin appcast.json --verify-tag --title "$GITHUB_REF_NAME" --notes-file release-notes.txt

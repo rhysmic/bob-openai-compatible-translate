@@ -1,0 +1,24 @@
+# Operating systems and editors
+.DS_Store
+._*
+Thumbs.db
+.vscode/
+.idea/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies, logs, and generated packages
+node_modules/
+*.log
+*.bobplugin
+*.tmp
+*.temp
+*.bak
+
+# Generated update feed
+/appcast.json

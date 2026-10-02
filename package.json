@@ -1,0 +1,33 @@
+{
+  "name": "bob-openai-compatible-translate",
+  "version": "2.1.1",
+  "description": "A Bob translation plugin for OpenAI-compatible APIs",
+  "main": "src/main.js",
+  "scripts": {
+    "build": "./build.sh",
+    "test": "node --check src/main.js && node --test tests/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhysmic/bob-openai-compatible-translate.git"
+  },
+  "keywords": [
+    "bob",
+    "translate",
+    "openai",
+    "ai",
+    "plugin",
+    "gpt",
+    "compatible",
+    "api"
+  ],
+  "author": "rhysmic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhysmic/bob-openai-compatible-translate/issues"
+  },
+  "homepage": "https://github.com/rhysmic/bob-openai-compatible-translate#readme",
+  "engines": {
+    "node": ">=22"
+  }
+}

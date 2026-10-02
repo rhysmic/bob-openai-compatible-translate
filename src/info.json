@@ -1,0 +1,87 @@
+{
+  "identifier": "com.rhysmic.bob.openai.compatible.translate",
+  "version": "2.1.1",
+  "category": "translate",
+  "name": "OpenAI Compatible Translate",
+  "summary": "Translate with OpenAI-compatible APIs",
+  "author": "rhysmic",
+  "homepage": "https://github.com/rhysmic/bob-openai-compatible-translate",
+  "appcast": "https://github.com/rhysmic/bob-openai-compatible-translate/releases/latest/download/appcast.json",
+  "minBobVersion": "1.8.0",
+  "options": [
+    {
+      "identifier": "apiType",
+      "type": "menu",
+      "title": "API type",
+      "desc": "Request format supported by your API provider",
+      "defaultValue": "responses",
+      "menuValues": [
+        {
+          "title": "Responses API",
+          "value": "responses"
+        },
+        {
+          "title": "Chat Completions API",
+          "value": "chat_completions"
+        }
+      ]
+    },
+    {
+      "identifier": "baseUrl",
+      "type": "text",
+      "title": "API Base URL",
+      "desc": "API base URL, for example https://api.openai.com/v1",
+      "textConfig": {
+        "type": "visible",
+        "height": 20,
+        "placeholderText": "https://api.openai.com/v1"
+      }
+    },
+    {
+      "identifier": "apiKey",
+      "type": "text",
+      "title": "API Key",
+      "desc": "Your API key",
+      "textConfig": {
+        "type": "secure",
+        "height": 20
+      }
+    },
+    {
+      "identifier": "model",
+      "type": "text",
+      "title": "Model",
+      "desc": "Model identifier supported by your provider, for example gpt-4.1",
+      "textConfig": {
+        "type": "visible",
+        "height": 20,
+        "placeholderText": "gpt-4.1"
+      }
+    },
+    {
+      "identifier": "reasoningEffort",
+      "type": "menu",
+      "title": "Reasoning effort",
+      "desc": "Requested reasoning level; automatically retries with a lower level if unsupported",
+      "defaultValue": "low",
+      "menuValues": [
+        {
+          "title": "Max",
+          "value": "max"
+        },
+        {
+          "title": "High",
+          "value": "high"
+        },
+        {
+          "title": "Medium",
+          "value": "medium"
+        },
+        {
+          "title": "Low",
+          "value": "low"
+        }
+      ]
+    }
+  ]
+}
